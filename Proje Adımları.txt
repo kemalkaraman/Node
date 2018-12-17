@@ -1,0 +1,73 @@
+﻿Kayıt işlemi
+
+-	Kullanıcı kayıt olduğunda mail adresine kode gönderilir.
+	Bu toke ve verilen url(http://localhost:8000/Verify) ile codu girip hesabını aktif hale getirir.
+-	Code 1 gün içinde kullanılmamış ise  mailine gelen kodu verilen url(http://localhost:8000/Verify) girdiği anda yeni kod gönderilir.
+-	Kullanıcı Hesabını aktif hale getirince login sayfasına yönledirilir.
+
+Login işlemi
+
+-	 Kullanıcı hesabını doğrulamış ve bilgilerini doğru girmiş ise kullanıcıya özel sayfaya yönlendirilir.(http://localhost:8000/LoginUser)
+- 	 Kullanıcı şifresini unuttuğu takdirde ise  forgot password linkine tıklayarak yönlendirilen sayfada mail adressini girmesi ile mail 
+	adresine şifre değiştirme linki gönderilir.Kullanıcı Mail Adresinden şifre değiştirme adrsine yönlendirilir.
+        Burda şifresini tekrar oluşturur ve login sayfasına giriş yapması için yönledirilir
+
+
+Admin işlemi
+
+-      	 login işlemini gerçekleştiren kullanıcı  eğer admin ise (http://localhost:8000/Admin)  Adresine giderek admin paneline giriş yapabilir.
+	Admin değilse bu sayfaya giriş gerçekleşmeyecektir.
+- 	 Soldaki menüden tüm kulanıcıları görebilir
+-        Soldaki menüden aktif yeni kullanıcılardan  kaç günlük kullanıcları görmek istiyorsa filtreleme işlemini yapabiliyor
+-	 Soldaki menüden pasif kullanıcılardan ise aktif olmamış kullanıcıların kaç gündür pasif olduğuna ve aktif olması için mail
+	adresine gönderilen kodun kalan geçerlilik süresini görebilecek
+-	 Admin Socket.io kütüphanesi ile anlık ve günlük site ziyaretçi sayısını görebilecek.
+
+
+Proje Veri Tabanı  Adı:testApp    kullanılan tablo:Users
+
+örnek veri aktif kullanıcı
+										{
+											"_id" : ObjectId("5c14fdf6c1ca261cd4c40d1d"),
+											"Name" : "kemal",
+											"Surname" : "karaman",
+											"Email" : "kemalkrmn42@gmail.com",
+											"Password" : "123",
+											"SecretToken" : "",
+											"SecretTokenDate" : null,
+											"CreateDate" : ISODate("2018-12-16T13:13:26.316Z"),
+											"Active" : true,
+											"isAdmin" : true,
+											"__v" : 0,
+											"ActiveDate" : ISODate("2018-12-17T17:15:08.495Z")
+										}
+örnek veri pasif kullanıcı
+										{
+											"_id" : ObjectId("5c16c642bfa2db072c474d12"),
+											"Name" : "ali",
+											"Surname" : "karaman",
+											"Email" : "ali@gmail.com",
+											"Password" : "123",
+											"SecretToken" : "jDEsW3A3tSmQP74nyoLo2F5Agyr8RULA",
+											"SecretTokenDate" : ISODate("2018-12-15T12:40:18.240Z"),
+											"CreateDate" : ISODate("2018-12-15T21:40:18.240Z"),
+											"Active" : false,
+											"__v" : 0
+										}
+örnek veri şifre yenileme 
+											{
+											"_id" : ObjectId("5c14fdf6c1ca261cd4c40d1d"),
+											"Name" : "kemal",
+											"Surname" : "karaman",
+											"Email" : "kemalkrmn42@gmail.com",
+											"Password" : "123",
+											"SecretToken" : "",
+											"SecretTokenDate" : null,
+											"CreateDate" : ISODate("2018-12-16T13:13:26.316Z"),
+											"Active" : true,
+											"isAdmin" : true,
+											"__v" : 0,
+											"ActiveDate" : ISODate("2018-12-17T17:15:08.495Z"),
+											"resetPasswordExpires" : ISODate("2018-12-17T21:30:30.261Z"),
+											"resetPasswordToken" : "uvPXyu5bE9ik37HAcTKfCHghK8HCFJ4s"
+										}

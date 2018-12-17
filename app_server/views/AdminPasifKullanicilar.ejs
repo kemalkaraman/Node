@@ -1,0 +1,48 @@
+
+
+<table class="table ">
+  <thead class="thead-dark">
+    <tr>
+    <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Email</th>
+      <th scope="col">PassiveDate</th>
+        <th scope="col">AccessTokenLifetime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%if(kullanicilar){%>
+      <% for(var i=0;i<kullanicilar.length;i++)  {%>
+      <tr>   <td><%=i+1%></td>
+                <td><%=kullanicilar[i].Name%></td>
+                   <td><%=kullanicilar[i].Surname%></td>
+                      <td><%=kullanicilar[i].Email%></td>
+                         <%var date1 = new Date();var n = date1.getDate(); var fark=date1-kullanicilar[i].CreateDate; 
+                         var diffDays = Math.ceil(fark / (1000 * 3600 * 24));  %>
+                          <td><%=diffDays%> gündür pasif</td>
+                           <%if(kullanicilar[i].SecretTokenDate){%>
+                            <%var date1 = new Date();var n = date1.getDate(); var fark=date1-kullanicilar[i].SecretTokenDate; 
+                            var diffDays = Math.ceil(fark / (1000 * 3600)); %>
+                            <%if(diffDays < 24){%>
+                               <td><%=diffDays%> saat</td>
+                            <%}
+                            if(diffDays > 24){%>
+                               <td>süresi doldu</td>
+                            <%} }
+                             if(!kullanicilar[i].SecretTokenDate){%>
+                              <td>Aktif</td>
+                            <%}%>  
+                           
+                          </tr>
+     <%}}%>
+      <%if(kullanicilar.length ==0){%>
+      <tr>
+      <td>
+      kayıt bulanamadı
+      </td>
+      </tr>
+     <%}%>
+
+  </tbody>
+</table>

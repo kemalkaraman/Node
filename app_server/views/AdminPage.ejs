@@ -1,0 +1,33 @@
+
+<table class="table ">
+  <thead class="thead-dark">
+    <tr>
+    <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Email</th>
+      <th scope="col">CreateDate</th>
+        <th scope="col">ActiveDate</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <% for(var i=0;i<kullanicilar.length;i++)  {%>
+      <tr>   <td><%=i+1%></td>
+                <td><%=kullanicilar[i].Name%></td>
+                   <td><%=kullanicilar[i].Surname%></td>
+                      <td><%=kullanicilar[i].Email%></td>
+                         <td><%=kullanicilar[i].CreateDate.toISOString().replace(/T/, ' ').replace(/\..+/, '')%></td>
+                           <%if(kullanicilar[i].ActiveDate){%>
+                           <td><%=kullanicilar[i].ActiveDate.toISOString().replace(/T/, ' ').replace(/\..+/, '')%></td>
+                            <%}%>  
+                           <%if(!kullanicilar[i].ActiveDate){%>
+                              <td>Passive</td>
+                            <%}%>     
+                            
+                          </tr>
+     <%}%>
+   
+
+  </tbody>
+</table>
